@@ -1,7 +1,27 @@
-# ProxyHeaven
 
-Free HTTP/S proxies are scrape & checked on github actions every 30 minutes.
 
-## License
+# Free HTTP & SOCKS Proxy List 🥧
 
-[MIT](LICENSE)
+[![Every 10 Minutes Update](https://github.com/rawatom/freeproxylist/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/rawatom/freeproxylist/actions/workflows/main.yml)
+![GitHub](https://img.shields.io/github/license/rawatom/freeproxylist)
+![GitHub last commit](https://img.shields.io/github/last-commit/rawatom/freeproxylist)
+
+It is a lightweight project that, every 10 minutes, scrapes lots of free-proxy sites, validates if it works, and serves a clean proxy list.
+
+
+> Scraper found **144** http, **28** socks proxies at the latest update. Usable proxies are below.
+## Usage
+
+Click the proxy type that you want and copy the URL.
+
+
+|File|Content|Count|
+|----|-------|-----|
+|[http.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/http.txt)|`ip_address:port`|144|
+|[socks4.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/socks4.txt)|`ip_adress:port`|27|
+|[socks5.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/socks5.txt)|`ip_adress:port`|1|
+
+## Contributing
+
+Contributions are welcome, and they are greatly appreciated! Every
+little bit helps, and credit will always be given.
