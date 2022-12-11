@@ -1,7 +1,11 @@
 import threading
 import requests
 
-def checker(p):     
+def checker(p: str): 
+    #print(f'#1 {p}')   
+    global http_live
+    global socks5_live
+    global socks4_live
     headers = {
          'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
      }
@@ -39,7 +43,7 @@ thread = []
 with open('not-checked.txt') as file:
     for line in file:
         line = line.strip()
-        t = threading.Thread(target=checker, args=(line))
+        t = threading.Thread(target=checker, args= {line})
         t.start()
         thread.append(t)
     for j in thread:
