@@ -11,19 +11,19 @@ def checker(p: str):
      }
     try:
         proxy = {"http": f"http://{p}", "https": f"http://{p}"}
-        res = requests.get('https://open.spotify.com/artist/0OjAaymO59uGiFmfpJrQpl', proxies= proxy, timeout= 2, headers= headers)
+        res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
         if res.status_code == 200:   
             http_live.append(p)
     except:
         try:
             proxy = {"http": f"socks4://{p}", "https": f"socks4://{p}"}
-            res = requests.get('https://open.spotify.com/artist/0OjAaymO59uGiFmfpJrQpl', proxies= proxy, timeout= 2, headers= headers)
+            res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
             if res.status_code == 200:   
                 socks4_live.append(p)
         except:
             try:
                 proxy = {"http": f"socks5://{p}", "https": f"socks5://{p}"}
-                res = requests.get('https://open.spotify.com/artist/0OjAaymO59uGiFmfpJrQpl', proxies= proxy, timeout= 2, headers= headers)
+                res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
                 if res.status_code == 200:   
                     socks5_live.append(p)
             except:
