@@ -11,19 +11,19 @@ def checker(p: str):
      }
     try:
         proxy = {"http": f"http://{p}", "https": f"http://{p}"}
-        res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
+        res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 2.5, headers= headers)
         if res.status_code == 200:   
             http_live.append(p)
     except:
         try:
             proxy = {"http": f"socks4://{p}", "https": f"socks4://{p}"}
-            res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
+            res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 2.5, headers= headers)
             if res.status_code == 200:   
                 socks4_live.append(p)
         except:
             try:
                 proxy = {"http": f"socks5://{p}", "https": f"socks5://{p}"}
-                res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
+                res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 2.5, headers= headers)
                 if res.status_code == 200:   
                     socks5_live.append(p)
             except:
@@ -31,7 +31,7 @@ def checker(p: str):
             pass
         pass
 
-def save_result(mode, live:list):
+def save_result(mode, live: list[str]):
     with open(f'{mode}.txt', 'w') as file:
         for proxy in live:
             if proxy:
@@ -48,7 +48,7 @@ with open('not-checked.txt') as file:
         thread.append(t)
     for j in thread:
         j.join() 
-    print('Saved live proxies.')
+    #print('Saved live proxies.')
     save_result('http', http_live)
     save_result('socks4', socks4_live)
     save_result('socks4', socks5_live)

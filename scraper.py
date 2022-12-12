@@ -3,6 +3,7 @@ from datetime import datetime
 import re
 import aiohttp
 import asyncio
+from bs4 import BeautifulSoup, Tag
 
 import requests
 
@@ -112,8 +113,55 @@ async def startCP(result: list):
                 result.append(proxy.group())
 
 
+def get_url(url):
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko) Version/8.0.8 Safari/600.8.9'
+    }
+    # url_name = url.split('//')[1].replace('/', '.')
+
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    return soup
+
+
+def extract(url, result: list):
+
+    soup = get_url(url)
+    soup_head = soup.find("table").find('thead').find("tr").contents
+    soup_row = soup.find("table").find('tbody').contents
+
+    for row_index, row_value in enumerate(soup_row):
+        if isinstance(row_value, Tag):
+            row_value = row_value.find_all('td')
+
+            detail_row_value = {}
+            detail_row_value['id'] = row_index
+
+            for head_index, head in enumerate(soup_head):
+                try:
+                    result.append(f'{row_value[0].get_text()}:{row_value[1].get_text()}')
+                except: # Checkbox aka Select###All###Proxies
+                    continue
+
+
 async def main():
     result = []
+    bs_urls = [
+    'https://free-proxy-list.net/', 
+    'https://www.sslproxies.org/', 
+    'https://free-proxy-list.net/anonymous-proxy.html',
+    'https://www.socks-proxy.net/',
+    'https://www.us-proxy.org/',
+    'https://free-proxy-list.net/uk-proxy.html', 
+    'https://premproxy.com/socks-list/',
+    'https://premproxy.com/list/'
+    ]
+    
+    for bs_url in bs_urls:
+        extract(bs_url, result)
+
     big = [
         'https://github.com/ShiftyTR/Proxy-List/raw/master/socks4.txt',
         'https://github.com/ShiftyTR/Proxy-List/raw/master/socks5.txt',

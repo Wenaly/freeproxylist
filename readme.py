@@ -7,8 +7,6 @@ README = """
 # Free HTTP & SOCKS Proxy List 🥧
 
 [![Every 10 Minutes Update](https://github.com/rawatom/freeproxylist/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/rawatom/freeproxylist/actions/workflows/main.yml)
-![GitHub](https://img.shields.io/github/license/rawatom/freeproxylist)
-![GitHub last commit](https://img.shields.io/github/last-commit/rawatom/freeproxylist)
 
 It is a lightweight project that, every 10 minutes, scrapes lots of free-proxy sites, validates if it works, and serves a clean proxy list.
 
