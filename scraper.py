@@ -112,23 +112,13 @@ async def startCP(result: list):
                                      re.RegexFlag.MULTILINE):
                 result.append(proxy.group())
 
-
-def get_url(url):
-
+def extract(url, result: list):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko) Version/8.0.8 Safari/600.8.9'
     }
-    # url_name = url.split('//')[1].replace('/', '.')
-
+    
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
-
-    return soup
-
-
-def extract(url, result: list):
-
-    soup = get_url(url)
     soup_head = soup.find("table").find('thead').find("tr").contents
     soup_row = soup.find("table").find('tbody').contents
 
