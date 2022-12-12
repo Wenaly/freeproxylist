@@ -1,7 +1,7 @@
 import threading
 import requests
 
-def checker(p: str): 
+def checker(p: str, failed: bool = False): 
     #print(f'#1 {p}')   
     global http_live
     global socks5_live
@@ -11,13 +11,13 @@ def checker(p: str):
      }
     try:
         proxy = {"http": f"http://{p}", "https": f"http://{p}"}
-        res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 2.5, headers= headers)
+        res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
         if res.status_code == 200:   
             http_live.append(p)
     except:
         try:
             proxy = {"http": f"socks4://{p}", "https": f"socks4://{p}"}
-            res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 2.5, headers= headers)
+            res = requests.get('http://test.js0.ch/', proxies= proxy, timeout= 5, headers= headers)
             if res.status_code == 200:   
                 socks4_live.append(p)
         except:
@@ -27,6 +27,8 @@ def checker(p: str):
                 if res.status_code == 200:   
                     socks5_live.append(p)
             except:
+                if failed == False:
+                    checker(p, True)
                 pass
             pass
         pass
