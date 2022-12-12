@@ -9,7 +9,7 @@
 It is a lightweight project that, every 10 minutes, scrapes lots of free-proxy sites, validates if it works, and serves a clean proxy list.
 
 
-> Scraper found **1253** http, **219** socks proxies at the latest update. Usable proxies are below.
+> Scraper found **1219** http, **240** socks proxies at the latest update. Usable proxies are below.
 ## Usage
 
 Click the proxy type that you want and copy the URL.
@@ -17,8 +17,8 @@ Click the proxy type that you want and copy the URL.
 
 |File|Content|Count|
 |----|-------|-----|
-|[http.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/http.txt)|`ip_address:port`|1253|
-|[socks4.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/socks4.txt)|`ip_adress:port`|218|
+|[http.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/http.txt)|`ip_address:port`|1219|
+|[socks4.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/socks4.txt)|`ip_adress:port`|239|
 |[socks5.txt](https://raw.githubusercontent.com/rawatom/freeproxylist/main/socks5.txt)|`ip_adress:port`|1|
 
 ## Contributing
